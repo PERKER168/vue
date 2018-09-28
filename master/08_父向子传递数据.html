@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/javascript">
+
+            var Son = {
+                template:`
+                    <div>
+                        接收到父组件的数据是：{{ title }}
+                        <h1 v-if="xxx">1</h1>
+                        <h1 v-show="xxx">2</h1>
+                        <ul>
+                            <li v-for="stu in ['张山','李四']">
+                                {{ stu }}
+                            </li>
+                        </ul>
+                        <button @click="changeXxx()">改变实现</button>
+                        <hr />
+                        单向数据流（vue->html）:
+                        <input type="text" :value="text" />
+                        <hr />
+                        单向数据流（vue->html->vue）:
+                        <input type="text" v-model="text" />
+                        <h1>
+                            主要看-->
+                            {{ text }}
+                        </h1>
+                    </div>
+                `,
+                // 声明接受参数
+                props:['title'],
+                data:function(){
+                    return{
+                        xxx:true,
+                        text:'hello'
+                    }
+                },
+                methods:{
+                    changeXxx:function(){
+                        this.xxx = !this.xxx;
+                    }
+                }
+            }
+            
+            // 父向子传递，就是v-bind给元素的属性赋值
+            var App = {
+                // template:'<h1>我是入口组件</h1>'
+                components:{
+                    'son':Son
+                },
+                template:`
+                    <div>
+                        <son :title="xxx"></son>
+                        <!-- 传递常量 <son title="测试"></son> -->
+                    </div>
+                `,
+                data:function(){
+                    return{
+                        xxx:'我是xxx'
+                    }
+                }
+            }
+            
+			new Vue({
+                el:'#app',
+                components:{
+                    // 声明要用的组件们
+                    // key是组件名，value是组件对象
+                    app:App
+                },
+				template:'<app />'// 入口组件
+				
+            });
+            
+		</script>
+	</body>
+</html>

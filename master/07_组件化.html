@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/javascript">
+            
+            /**
+             * 生出子，声明子，使用子
+             */
+            // 头组件
+            var MyHeader = {
+                template:'<div>我是头部</div>'
+            }
+            
+            // 函数调用方式创建组件
+            // 语法糖
+            var MyBody = Vue.extend({
+                template:'<div>我是函数调用方式的中部</div>'
+            });
+
+            // var MyBody = {
+            //     template:'<div>我是中部</div>'
+            // }
+            
+            var MyFooter = {
+                template:`
+                <div>
+                    我是底部
+                    <button @click="showNum(123)">点我</button>
+                </div>
+                `,
+                methods:{
+                    showNum:function(num){
+                        alert(num);
+                    }
+                }
+            }
+
+            // 声明入口组件
+            var App = {
+                // template:'<h1>我是入口组件</h1>'
+                components:{
+                    'my-header':MyHeader,
+                    'my-body':MyBody,
+                    'my-footer':MyFooter
+                },
+                template:`
+                    <div>
+                        <my-header></my-header>
+                        <my-body></my-body>
+                        <my-footer></my-footer>
+                    </div>
+                `
+            }
+            
+			new Vue({
+                el:'#app',
+                components:{
+                    // 声明要用的组件们
+                    // key是组件名，value是组件对象
+                    app:App
+                },
+				template:'<app />'// 入口组件
+				
+            });
+            
+		</script>
+	</body>
+</html>
