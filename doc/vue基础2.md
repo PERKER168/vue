@@ -223,7 +223,7 @@
 ### 组件生命周期
 
 * 需要频繁的创建和销毁组件
-  * 比如页面中部分内容显示与隐藏，但是用的是v-if
+  * 比如页面中部分内容显示与隐藏，但是用的是`v-if`
 * 组件缓存
   * 内置组件中`<keep-alive>`
   * 被其包裹的组件，在`v-if="false"`的时候，不会销毁，而是停用
@@ -234,7 +234,7 @@
     * A可以操作数据，B数据没有初始化
   * `mounted`和`beforeMount`
     * A可以操作DOM，B还未生成DOM
-  * updataed和beforeUpdate
+  * `updataed`和`beforeUpdate`
     * A可以获取最终数据，B可以二次修改
 
 
