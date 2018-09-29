@@ -8,43 +8,47 @@
 	<body>
 		<div id="app"></div>
 		<script type="text/javascript">
-            /**
-			 * 1.过滤器可以给数据显示进行添油加醋
-			 * 	需求：原本显示的数据是abc，添油加醋以后反转成cba
-			 * 	需求实现：
-			 * 		1.为了互动性更好，用input + v-model来获取数据到vue中
-			 * 		2.输出: {{ 内容 | 使用过滤器输出 }}
-			 */
-
+           
             // 入口组件
             var App = {
                 template:`
                     <div>
                         <input type="text" v-model="myText" />
-						{{ myText | reverse('中文版') }}
+						{{ myText }}
+						<br />
+						<button @click=" stus[0].name='rose'; ">改变stus[0].name属性</button>
                     </div>
                 `,
 				data:function(){
 					return{
-						myText:''
+						myText:'',
+						stus:[{name:'jack'}]
 					}
 				},
-				// 组件内的过滤器
-				filters:{
-					reverse:function(dataStr,lang){ // 参数1就是传递的原数据
-						// 			变数组				反转	  变字符串
-						var newStr = dataStr.split('').reverse().join();
-						// return '固定字符串'; // 显示的内容
-						return lang + ':' + newStr;
+				watch:{
+					// 监视复杂类型，无法监视的原因是因为监视的是对象的地址，地址没改，改的是同地址属性的值
+					/*
+					stus:function(){
+						console.log('监视成功，不可能！');
+					 },
+					*/
+					// 深度监视：object || array 
+					stus:{
+						deep:true,//深度
+						handler:function(newV,oldV){
+							console.log('监视复杂数据类型成功！');
+						}
+					},
+					// key是属于data属性的属性名 value是监视后的行为
+					myText:function(newV,oldV){
+						console.log(newV,oldV);
+						if(newV === 'iloveyou'){
+							alert('我爱你');
+						}
 					}
 				}
             }
-            
-			// 全局过滤器 使用方式：{{ 'xxx' | myreverse('arg1') }}
-			Vue.filter('myreverse',function(data,arg1){
-				return 'xxx';
-			});
-
+			
 			new Vue({
                 el:'#app',
                 components:{

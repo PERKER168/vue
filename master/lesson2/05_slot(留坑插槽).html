@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <style>
+            li{
+                list-style: none;
+                float: left;
+                width: 33%;
+                height: 100px;
+                background-color: yellowgreen;
+                border: 1px solid #000;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/javascript">
+           // slot是留坑，外部填入html内容
+            var MyLi = {
+                template:`<li>
+                    <slot></slot>
+                </li>`
+            }
+            
+            Vue.component('my-li',MyLi);
+            
+            // 总结：slot其实就是父组件传递的DOM结构，vue提供的内置组件 <slot></slot>，
+
+            // 入口组件：实现一个九宫格
+            var App = {
+                template:`
+                    <div>
+                        <ul>
+                            <my-li>
+                                <button>111</button>
+                            </my-li>
+                            <my-li>
+                                <h1> 222 </h1>
+                            </my-li>
+                            <my-li>3</my-li>
+                            <my-li>4</my-li>
+                            <my-li>5</my-li>
+                            <my-li>6</my-li>
+                            <my-li>7</my-li>
+                            <my-li>
+                                <h1> 888 </h1>
+                            </my-li>
+                            <my-li>
+                                <button>999</button>
+                            </my-li>
+                        </ul>
+                    </div>
+                `
+            }
+			
+			new Vue({
+                el:'#app',
+                components:{
+                    // 声明要用的组件们
+                    // key是组件名，value是组件对象
+                    app:App
+                },
+				template:'<app />'// 入口组件
+				
+            });
+            
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <style>
+            li{
+                list-style: none;
+                float: left;
+                width: 33%;
+                height: 100px;
+                background-color: yellowgreen;
+                border: 1px solid #000;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/javascript">
+           // slot是留坑，外部填入html内容
+            var MySlot = {
+                template:`<li>
+                    以下预留第一个坑：
+                    <slot name="one"></slot>
+                    <br />
+                    以下预留第二个坑：
+                    <slot name="two"></slot>
+                </li>`
+            }
+            
+            Vue.component('my-slot',MySlot);
+
+            // 入口组件
+            var App = {
+                template:`
+                    <div>
+                        <my-slot>
+                            <h1 slot="one">第一个坑</h1>
+                            <button slot="two">按钮</button>
+                       </my-slot> 
+                    </div>
+                `
+            }
+			
+			new Vue({
+                el:'#app',
+                components:{
+                    // 声明要用的组件们
+                    // key是组件名，value是组件对象
+                    app:App
+                },
+				template:'<app />'// 入口组件
+				
+            });
+            
+		</script>
+	</body>
+</html>
