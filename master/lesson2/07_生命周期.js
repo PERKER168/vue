@@ -21,7 +21,7 @@ var Test = {
 
 	/**
 	 * 	使用该组件，就会触发以上的事件（钩子函数）
-	 *	created 中可以操作数据，并且可以实现vue -> 页面的影响，
+	 *	created 中可以操作数据，并且可以实现 vue -> 页面的影响，
 	 *	应用：发起Ajax请求
 	 */
 	beforeCreate: function() {
@@ -64,7 +64,7 @@ var Test = {
 	},
 	/**
 	 * 销毁	最终都是做一些其他功能的释放，比如：保存到LocalStorage
-	 * 对应父组件v-if=false 就销毁当前组件
+	 * 对应父组件 v-if=false 就销毁当前组件
 	 */
 	beforeDestroy:function(){
 		// 销毁之前
@@ -98,9 +98,9 @@ var App = {
 			<button @click="isExist = !isExist">事关子组件生死</button>
 		</div>
 	`,
-	data:function(){
+	data:function () {
 		return {
-			isExist:true
+			isExist: true
 		}
 	}
 }
