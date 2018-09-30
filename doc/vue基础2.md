@@ -1,23 +1,22 @@
-## 学员反馈
+## 复习
 
-### 复习
+### vue复习
 
-* vue复习
-  * options的根属性
-    * el:目的地（string||DOM元素）
-    * template 模板
-    * data是一个函数，return一个对象，对象中key可以直接在页面中使用，在js中`this.key`名
-      * data中的属性，在DOM中直接用，在js中`this.xxx`
-    * components:key是组件名，value是组件对象
-    * methods：一般用来配合`xxx`事件
-    * props：子组件接收的参数设置`['title']`
-  * 指令
-    * `v-if/v-show`if就是插入或移除的问题，show是否隐藏的问题
-    * `v-else-if/v-else`必须和`v-if`是相邻的元素
-    * `v-bind/v-on`:`v-bind`是给属性赋值，`v-on`给事件进行绑定
-      * `v-bind:属性="变量"`简写为`:属性名="变量"`
-      * `v-on:事件名="函数"`简写为`@事件名="函数"`
-    * `v-bind/v-model`:`v-bind`就是单向数据流（vue->页面),`v-model`是双向的（vue->页面，页面->vue）
+* options的根属性
+  * el:目的地（string||DOM元素）
+  * template 模板
+  * data是一个函数，return一个对象，对象中key可以直接在页面中使用，在js中`this.key`名
+    * data中的属性，在DOM中直接用，在js中`this.xxx`
+  * components:key是组件名，value是组件对象
+  * methods：一般用来配合`xxx`事件
+  * props：子组件接收的参数设置`['title']`
+* 指令
+  * `v-if/v-show`if就是插入或移除的问题，show是否隐藏的问题
+  * `v-else-if/v-else`必须和`v-if`是相邻的元素
+  * `v-bind/v-on`:`v-bind`是给属性赋值，`v-on`给事件进行绑定
+    * `v-bind:属性="变量"`简写为`:属性名="变量"`
+    * `v-on:事件名="函数"`简写为`@事件名="函数"`
+  * `v-bind/v-model`:`v-bind`就是单向数据流（vue->页面),`v-model`是双向的（vue->页面，页面->vue）
 
 ### 注册全局组件
 
