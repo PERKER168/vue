@@ -9,7 +9,7 @@ var TempComponent = {
                     我是子组件
                 </div>
 				`
-}
+};
 
 // 声明全局组件
 Vue.component('temp', TempComponent);
@@ -21,24 +21,24 @@ var App = {
 						<button ref="btn">我是按钮</button>
 					</div>
 				`,
-    beforeCreate: function () {
+    beforeCreate: function() {
         // 这里不能操作数据，只是初始化了事件等
         console.log(this.$refs.btn);
     },
-    created: function () {
+    created: function() {
         // 可以操作数据了
         console.log(this.$refs.btn);
     },
-    beforeMount: function () {
+    beforeMount: function() {
         // new Vue 发生装载 替换 <div id="app"></div> 之前
         console.log(this.$refs.btn);
     },
-    mounted: function () {
+    mounted: function() {
         // new Vue 发生装载 替换 <div id="app"></div> 之后
         console.log(this.$refs.btn);
         console.log(this.$refs.temp);
     }
-}
+};
 /**
  * $属性：
  * $refs 获取组件内的元素

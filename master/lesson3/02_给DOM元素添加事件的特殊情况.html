@@ -9,11 +9,6 @@
 		<div id="app"></div>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 		<script type="text/javascript">
-			/**
-			 * 
-			 */
-			
-
 			var App = {
 				template: `
 					<div>
@@ -30,7 +25,12 @@
 					// 显示元素，并给与获取焦点
 					this.isShow = true; // 会触发input元素的插入
 					
-					// 当次代码执行完之后，vue才会根据实际的值，进行DOM的操作 this.isShow = true; 不会在这句代码之后马上显示input标签
+					/**
+					 * 当次代码执行完之后，
+					 * vue才会根据实际的值，
+					 * 进行DOM的操作 this.isShow = true; 
+					 * 不会在这句代码之后马上显示input标签
+					 */
 					this.isShow = false;
 					this.isShow = true;
 					// 给input元素获取焦点
