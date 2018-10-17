@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Vue.js</title>
-
 	</head>
 	<body>
 		<div id="app"></div>
@@ -18,17 +17,41 @@
 					</div>`
 			};
 			
+			var Register = {
+				template:`<div>
+					我是注册页面
+				</div>`
+			};
+			
 			// 2. 安装插件 => ？
-			Vue.use(VueRouter);
+			Vue.use(VueRouter); // VueRouter.install = fn(Vue);
+			// use:function(plugin){ plugin.install(Vue); }
 			// 3. 创建一个路由对象
 			var router = new VueRouter({
 				// 4. 配置路由对象
-				routes:[ { path:'/login',component:Login } ]
+				routes:[ 
+					// 如有对象有了名称就等于有了变量名，router-link只需说明这个变量名就可以了
+					/* { path:'/login',component:Login },
+					{ path:'/register',component:Register } */
+					{name:'login',path:'/mylogin',component:Login },
+					{name:'register',path:'/myregister',component:Register }
+				]
 			});
 			
 			// 6. 指定路由改变局部的位置
 			var App = {
 				template:`<div>
+						<!-- vue-router内置组件 -->
+						<!--
+						<router-link to="/login">登陆</router-link>
+						<router-link to="/register">注册</router-link>
+						-->
+						
+						<router-link :to="{ name:'login' }">登陆</router-link>
+						<router-link :to="{ name:'login' }">登陆</router-link>
+						<router-link :to="{ name:'login' }">登陆</router-link>
+						<router-link :to="{ name:'register' }">注册</router-link>
+						
 						<router-view></router-view>
 					</div>`
 			};
