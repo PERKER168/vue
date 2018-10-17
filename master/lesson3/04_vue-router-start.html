@@ -7,17 +7,44 @@
 	</head>
 	<body>
 		<div id="app"></div>
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script src="../tools/vue-v2.5.17.js"></script>
 		<!-- 1.引入vue-router（核心插件）对象 -->
 		<script src="../tools/vue-router-v3.0.1.js"></script>
 		<script type="text/javascript">
-			// 2. 创建一个路由对象
-			console.log(VueRouter);
-			var router = new VueRouter({});
-			// 3. 配置路由对象
-			// 4. 安装插件 => ？
-			// 5. 将配置好的路由对象关联到vue实例中
+			
+			var Login = {
+				template:`<div>
+						我是登陆页面
+					</div>`
+			}
+			
+			// 2. 安装插件 => ？
+			Vue.use(VueRouter);
+			// 3. 创建一个路由对象
+			var router = new VueRouter({
+				// 4. 配置路由对象
+				routes:[ { path:'/login',component:Login } ]
+			});
+			
 			// 6. 指定路由改变局部的位置
+			var App = {
+				template:`<div>
+						<router-view></router-view>
+					</div>`
+			}
+			
+			// 5. 将配置好的路由对象关联到vue实例中
+			new Vue({
+				el:'#app',
+				/**
+				 * 不加这一步，会导致运行时候中undefined对象取不到matched
+				 */
+				router:router,
+				components:{
+					app:App
+				},
+				template:'<app />'
+			});
 		</script>
 	</body>
 </html>
